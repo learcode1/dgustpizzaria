@@ -19,7 +19,7 @@ function atualizarStatus() {
 
   const diaAberto = diaSemana === 3 || diaSemana >= 0;
 
-   if (diaAberto) {
+   if (diaAberto && aberto) {
      console.log(` Hoje é dia: ${diaSemana}`)
      console.log(` A hora é: ${hora}`)
     statusEl.innerText = "ABERTO AGORA";
@@ -452,6 +452,12 @@ function fecharAviso() {
 btnAddCarrinho.addEventListener("click", () => {
   if (!produtoSelecionado) return;
 
+  if (document.querySelector(".status").innerText === "FECHADO") {
+    abrirAviso();
+    document.getElementById("btnFecharAviso").onclick = fecharAviso;
+    document.getElementById("fecharAvisoo").onclick = fecharAviso;
+    return;
+  }
 
   // PRODUTO MEIO A MEIO
   if (produtoSelecionado.nome.includes("Meio a meio")) {
@@ -622,6 +628,7 @@ function enviarPedido() {
 // INIT
 // =======================
 renderizarCardapio();
+
 
 
 
