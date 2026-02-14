@@ -15,14 +15,18 @@ function atualizarStatus() {
 
   
     const aberto = hora >= 19 && hora < 24;
-  
+    
 
   const diaAberto = diaSemana === 3 || diaSemana >= 0;
 
    if (diaAberto) {
+     console.log(` Hoje é dia: ${diaSemana}`)
+     console.log(` A hora é: ${hora}`)
     statusEl.innerText = "ABERTO AGORA";
     statusEl.style.background = "#27ae60";
   } else {
+      console.log(` Hoje é dia: ${diaSemana}`)
+     console.log(` A hora é: ${hora}`)
     statusEl.innerText = "FECHADO";
     statusEl.style.background = "#c0392b";
   }
@@ -624,4 +628,5 @@ function enviarPedido() {
 // INIT
 // =======================
 renderizarCardapio();
+
 
