@@ -1,30 +1,25 @@
 
-// ===== MODAL DE AVISO =====
-
 const inputCEP = document.getElementById("cep");
 const pEndereco = document.getElementById("endereco");
 const pTaxa = document.getElementById("taxaEntrega");
 
 let taxaEntrega = 0;
 
-// =======================
-// STATUS ABERTO/CERRADO
-// =======================
 
 function atualizarStatus() {
   const statusEl = document.querySelector(".status");
   const agora = new Date();
   const hora = agora.getHours();
-  const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda...
+  const diaSemana = agora.getDay(); 
 
 
-  // horário de funcionamento: 19h às 00h
-    const aberto = hora >= 2 && hora < 24;
   
-  // Dias permitidos: quarta (3), quinta (4), sexta (5), sábado (6), domingo (0)
-  const diaAberto = diaSemana === 0 || diaSemana >= 1;
+    const aberto = hora >= 19 && hora < 24;
+  
 
-   if (diaAberto && aberto) {
+  const diaAberto = diaSemana === 3 || diaSemana >= 0;
+
+   if (diaAberto) {
     statusEl.innerText = "ABERTO AGORA";
     statusEl.style.background = "#27ae60";
   } else {
@@ -36,9 +31,9 @@ function atualizarStatus() {
 atualizarStatus();
 setInterval(atualizarStatus, 60000);
 
-// =======================
-// PRODUTOS (exemplo)
-// =======================
+
+// PRODUTOS 
+
 const produtos = [
   {
     id: 30,
@@ -286,10 +281,7 @@ desativados = [
   },
 ]
 
-// Molho da casa, mussarela, costela desfiada, queijo minas, cebola roxa e orégano
-// =======================
-// ELEMENTOS
-// =======================
+
 const cardapioEl = document.querySelector(".cardapio");
 const carrinhoEl = document.getElementById("carrinho");
 const listaCarrinhoEl = document.getElementById("listaCarrinho");
@@ -300,21 +292,14 @@ const modalDescricao = document.getElementById("modalDescricao");
 const modalPreco = document.getElementById("modalPreco");
 const btnAddCarrinho = document.getElementById("btnAddCarrinho");
 const checkoutEl = document.getElementById("checkout");
-
-
-// =======================
-// ESTADO
-// =======================
 let produtoSelecionado = null;
 let tamanhoSelecionado = null;
 let saboresSelecionados = [];
 let modoMeioAMeio = false;
 let carrinho = [];
 
+//  CARDÁPIO
 
-// =======================
-// RENDERIZAR CARDÁPIO
-// =======================
 
 function renderizarCardapio() {
   cardapioEl.innerHTML = "";
@@ -343,10 +328,8 @@ function renderizarCardapio() {
   });
 }
 
-//////////////////////////
-// =======================
 // MODAL
-// =======================
+
 
 
 
@@ -394,14 +377,14 @@ function selecionarTamanho(tamanho, botao) {
 
     const ativos = document.querySelectorAll("#opcoesTamanho button.ativo");
 
-    // se já tiver 2 ativos, limpa tudo
+
     if (ativos.length >= 2) {
       botoes.forEach(btn => btn.classList.remove("ativo"));
     }
 
     botao.classList.add("ativo");
 
-    // SOMA DOS TAMANHOS ATIVOS
+  
     let total = 0;
 
   document
@@ -449,9 +432,9 @@ function fecharModal() {
 
 
 
-// =======================
+
 // CARRINHO
-// =======================
+
 function abrirAviso() {
   const avisoEl = document.getElementById("modalAviso");
   avisoEl.style.display = "flex";
@@ -511,14 +494,14 @@ btnAddCarrinho.addEventListener("click", () => {
   }
 
   atualizarCarrinho();
-  fecharModal(); // aqui era abrirModal(), isso estava errado
+  fecharModal(); 
 });
 
 function renderizarTamanhosBase() {
   const el = document.getElementById("opcoesTamanho");
   el.innerHTML = "";
 
-  const tamanhos = produtos[0].tamanhos; // todos têm os mesmos nomes
+  const tamanhos = produtos[0].tamanhos;
 
   tamanhos.forEach((t, i) => {
     const btn = document.createElement("button");
@@ -558,7 +541,7 @@ function atualizarCarrinho() {
   const total = carrinho.length > 0 ? subtotal : 0;
   totalEl.innerText = total.toFixed(2);
 
-  /// Adiciona taxa de entrega na lista do carrinho
+ 
   if (carrinho.length > 0) {
   const liTaxa = document.createElement("li");
   liTaxa.innerHTML = `<strong>Taxa de entrega</strong> - A COMBINAR NO WHATSAPP‼️⚠️`;
@@ -582,9 +565,9 @@ function calcularPrecoMeioAMeio() {
 }
 
 
-// =======================
-// CARRINHO RECOLHÍVEL
-// =======================
+
+// CARRINHO 
+
 document.getElementById("toggleCarrinho").addEventListener("click", () => {
   carrinhoEl.classList.toggle("fechado");
 });
@@ -627,7 +610,7 @@ function enviarPedido() {
   mensagem += `\n Pagamento: ${pagamento}`;
   mensagem += `\n\n *Obrigado pelo pedido!*`;
 
-  const telefone = "+5522981771451"; // ex: 5511999999999
+  const telefone = "+5522981127370"; 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
   window.open(url, "_blank");
@@ -641,3 +624,4 @@ function enviarPedido() {
 // INIT
 // =======================
 renderizarCardapio();
+
