@@ -452,12 +452,6 @@ function fecharAviso() {
 btnAddCarrinho.addEventListener("click", () => {
   if (!produtoSelecionado) return;
 
-  if (document.querySelector(".status").innerText === "FECHADO") {
-    abrirAviso();
-    document.getElementById("btnFecharAviso").onclick = fecharAviso;
-    document.getElementById("fecharAvisoo").onclick = fecharAviso;
-    return;
-  }
 
   // PRODUTO MEIO A MEIO
   if (produtoSelecionado.nome.includes("Meio a meio")) {
@@ -628,5 +622,6 @@ function enviarPedido() {
 // INIT
 // =======================
 renderizarCardapio();
+
 
 
