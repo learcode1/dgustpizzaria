@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #111;
+  color: #fff;
+  padding-bottom: 180px; /* espaço pro carrinho */
+}
+/*BOTAO DE LOGIN*/
+.login {
+top: 15px;
+left: 15px;
+width: 40px;
+height: 40px;
+background: url("./assets/icons/login2.png") center/cover no-repeat;
+color: rgba(255, 255, 255, 0);
+border-radius: 50%;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+position: fixed;
+display: flex;
+z-index: 1000;
+overflow: hidden;
+}
+
+.login::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+
+
+}
+
+.login:hover::before {
+background: #da6c5f;
+transform: skewX(-45deg);
+transition: left 0.5s;
+left: 100%;
+}
+
+
+
+/* ================= HEADER ================= */
+
+
+.hero {
+  height: 260px;
+  background: url("./assets/img/fundo.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.nome-loja {
+  font-size: 2rem;
+}
+
+.horario {
+  margin: 8px 0;
+  color: #ddd;
+}
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  background: #27ae60;
+}
+
+/* ================= AVISO ================= */
+.taxaaviso {
+  background: #e74c3c;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 10px;
+  h2 {
+    color: #fff;
+    font-size-adjust: auto;
+  }
+}
+.aviso {
+  padding: 20px;
+  text-align: center;
+}
+
+/* ================= CARDÁPIO ================= */
+.cardapio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.produto {
+  background: #1c1c1c;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.produto h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.produto p {
+  margin-bottom: 20px;
+}
+
+.produto button {
+  background: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.produto button:hover {
+  background: #27ae60;
+   transform: scale(1.08);
+   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.produto button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* ================= BOTÃO CARRINHO ================= */
+#toggleCarrinho {
+  position: fixed;
+  bottom: 140px;
+  right: 15px;
+  background: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 50px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+/* ================= CARRINHO ================= */
+#carrinho {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222020;
+  color: #ffffff;
+  padding: 15px;
+  border-top: 3px solid #e74c3c;
+  z-index: 998;
+  transition: transform 0.3s ease;
+}
+
+#carrinho.fechado {
+  transform: translateY(85%);
+}
+
+#carrinho h3 {
+  margin-bottom: 10px;
+}
+
+#listaCarrinho {
+  list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+#listaCarrinho li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+#listaCarrinho button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e74c3c;
+  background-color: #e74c3c;
+}
+
+#btnFinalizarPedido {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* ================= MODAL ================= */
+.tamanhos button {
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tamanhos button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);;
+}
+
+.tamanhos button.ativo {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.modal-conteudo {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+
+  max-height: 90vh;        /* nunca passa da tela */
+  overflow-y: auto;        /* ativa scroll vertical */
+
+  color: #fff;
+}
+
+.fechar {
+  float: right;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color :#e74c3c
+}
+
+.modal-conteudo button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #27ae60;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+
+#modalImagem {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/*SCROLL PERSONALIZADO*/
+.modal-conteudo::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-conteudo::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 10px;
+}
+
+.modal-conteudo::-webkit-scrollbar-thumb {
+  background: #e74c3c;   /* vermelho da marca */
+  border-radius: 10px;
+}
+
+.modal-conteudo::-webkit-scrollbar-thumb:hover {
+  background: #ff4d5a;
+}
+
+/**/
+/* Scroll da página inteira */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #e74c3c;
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #ff4d5a;
+}
+
+
+/* ================= CHECKOUT ================= */
+#checkout {
+  background: #1c1c1c;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+#checkout input,
+#checkout select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+#checkout button {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+/* ================= IMAGENS DOS PRODUTOS ================= */
+.produto img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* ================= AVISO MODAL ================= */
+.aviso-modal {
+  text-align: center;
+}
+
+.aviso-modal h3 {
+  margin-bottom: 10px;
+}
+
+.aviso-modal p {
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.aviso-modal button {
+  background: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ================= INFO MEIO A MEIO ================= */
+.info-meio {
+  position: sticky;
+  top: 0;
+  background: #111;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 999;
+}

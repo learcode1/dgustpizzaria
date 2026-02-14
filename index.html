@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D Gust - Pizzaria 🍕⭐</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+        <div class="overlay">
+           <button class="login" onclick="window.location.href='admin/login.html'"></button>
+            <h1 class="nome-loja">D Gust - Pizzaria 🍕⭐</h1>
+            <p class="horario">🕑 Quarta a Domingo - 19h às 00h</p>
+            <span class="status">ABERTO AGORA</span>
+        </div>
+  </header>
+
+  <main>
+        <section class="taxaaviso">
+            <h2>⚠️ Taxa de entrega: A COMBINAR NO WHATSAPP‼️</h2>
+            <p>O valor da taxa de entrega será calculado no WhatsApp após o envio do pedido. O valor pode variar dependendo da localização.</p> </br>
+            <p> 35cm - 8 fatias || 45cm - 12 fatias</p>
+          </section>
+            <section class="aviso">
+            <h1>Faça seu pedido abaixo!</h1>
+            
+              </section>
+        <section class="cardapio"></section>
+            
+  </main>
+         
+
+<button id="toggleCarrinho">🛒 Carrinho</button>
+
+<div id="carrinho" class="fechado">
+  <h3>Seu pedido</h3>
+  <ul id="listaCarrinho"></ul>
+
+  <p><strong>Total:</strong> R$ <span id="total">0.00</span></p>
+
+  <button id="btnFinalizarPedido" onclick="abrirCheckout()">Finalizar pedido</button>
+    <h4 style="color: #ffe600d5;">⚠️ Confira o seu pedido antes de finalizar</h4>
+</div>
+
+
+
+  <!-- MODAL DO PRODUTO (AQUI) -->
+  <div id="modalProduto" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">✖</span>
+      <h3 id="modalNome"></h3>
+      <img id="modalImagem" alt="Imagem do produto">
+      <p id="modalDescricao"></p>
+      <div class="tamanhos" id="opcoesTamanho"></div>
+      <h3>R$ <span id="modalPreco"></span></h3>
+      <p id="avisoMeioAMeio" style="display:none; color:#e74c3c; margin-top:10px;">
+      Escolha dois sabores para a pizza meio a meio.</p>
+      <button id="btnAddCarrinho">Adicionar ao carrinho</button>
+    </div>
+  </div>
+  <div id="checkout" style="display:none">
+  <h1>Finalizar pedido</h1>
+
+  <input id="nome" placeholder="Seu nome">
+  <input id="endereco" placeholder="Endereço">
+  <p id="endereco"></p>
+  <p class="taxaviso">O VALOR DA TAXA SERÁ CALCULADO NO WHATSAPP‼️⚠️</p>
+
+  
+  <select id="pagamento">
+    <option value="Pix">Pix</option>
+    <option value="Cartão">Cartão</option>
+    <option value="Dinheiro">Dinheiro</option>
+  </select>
+
+  <button onclick="enviarPedido()">Enviar pedido</button>
+</div>
+<div id="modalAviso" class="modal">
+  <div class="modal-conteudo aviso-modal">
+    <span class="fechar" id="fecharAvisoo">✖</span>
+
+    <h3>🚫 Estamos fechados</h3>
+    <p>
+      Nosso horário de funcionamento é<br>
+      <strong>Quarta a Domingo — 19h às 00h</strong>
+    </p>
+
+    <button id="btnFecharAviso">Entendi</button>
+  </div>
+</div>
+
+
+<script src="./js/script.js"></script>
+</body>
+</html>
