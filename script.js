@@ -13,7 +13,7 @@ function atualizarStatus() {
 
   const diaAberto = diaSemana === 3 || diaSemana >= 0;
 
-   if (diaAberto && aberto) {
+   if (diaAberto) {
     statusEl.innerText = "ABERTO AGORA";
     statusEl.style.background = "#27ae60";
   } else {
@@ -617,4 +617,5 @@ function enviarPedido() {
 
 
 renderizarCardapio();
+
 
